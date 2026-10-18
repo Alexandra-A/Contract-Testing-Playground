@@ -1,3 +1,4 @@
+
 const path = require('path');
 const { PactV3, MatchersV3 } = require('@pact-foundation/pact');
 const { getPayment } = require('../../src/consumer/paymentClient');
@@ -33,10 +34,7 @@ describe('Payment API contract', () => {
       });
 
     await provider.executeTest(async (mockServer) => {
-      const payment = await getPayment(
-        mockServer.url,
-        '123'
-      );
+      const payment = await getPayment(mockServer.url, '123');
 
       expect(payment).toEqual({
         id: '123',
