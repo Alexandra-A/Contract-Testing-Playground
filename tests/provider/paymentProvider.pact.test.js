@@ -5,18 +5,10 @@ const { app, setPayment } = require('../../src/provider/app');
 
 describe('PaymentService contract verification', () => {
   it('satisfies the OrderService contract', async () => {
-    setPayment('123', {
-      id: '123',
-      status: 'approved',
-      amount: 4999,
-      currency: 'EUR',
-    });
-
     const server = app.listen(0);
 
     try {
-      const address = server.address();
-      const port = address.port;
+      const port = server.address().port;
 
       await new Verifier({
         provider: 'PaymentService',
@@ -27,6 +19,16 @@ describe('PaymentService contract verification', () => {
             'pacts/OrderService-PaymentService.json'
           ),
         ],
+        stateHandlers: {
+          'payment 123 exists': async () => {
+            setPayment('123', {
+              id: '123',
+              status: 'approved',
+              amount: 4999,
+              currency: 'EUR',
+            });
+          },
+        },
       }).verifyProvider();
     } finally {
       await new Promise((resolve, reject) => {
