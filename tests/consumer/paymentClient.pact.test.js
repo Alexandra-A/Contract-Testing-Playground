@@ -29,7 +29,7 @@ describe('Payment API contract', () => {
           id: like('123'),
           status: like('approved'),
           amount: like(4999),
-          currency: like('USD'),
+          currency: like('EUR'),
         },
       });
 
@@ -40,7 +40,7 @@ describe('Payment API contract', () => {
         id: '123',
         status: 'approved',
         amount: 4999,
-        currency: 'EUR',
+        currency: 'USD',
       });
     });
   });
