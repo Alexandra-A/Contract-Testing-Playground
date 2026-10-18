@@ -1,3 +1,4 @@
+const path = require('path');
 const { PactV3, MatchersV3 } = require('@pact-foundation/pact');
 const { getPayment } = require('../../src/consumer/paymentClient');
 
@@ -7,6 +8,7 @@ describe('Payment API contract', () => {
   const provider = new PactV3({
     consumer: 'OrderService',
     provider: 'PaymentService',
+    pactDir: path.resolve(process.cwd(), 'pacts'),
   });
 
   it('returns an approved payment', async () => {
