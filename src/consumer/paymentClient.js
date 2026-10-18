@@ -1,4 +1,3 @@
-
 async function getPayment(baseUrl, paymentId) {
   const response = await fetch(
     `${baseUrl}/payments/${encodeURIComponent(paymentId)}`
