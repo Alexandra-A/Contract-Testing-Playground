@@ -40,7 +40,7 @@ describe('Payment API contract', () => {
         id: '123',
         status: 'approved',
         amount: 4999,
-        currency: 'USD',
+        currency: 'EUR',
       });
     });
   });
