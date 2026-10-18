@@ -25,7 +25,7 @@ describe('PaymentService contract verification', () => {
               id: '123',
               status: 'approved',
               amount: 4999,
-              currency: 'EUR',
+              currency: 'USD',
             });
           },
         },
